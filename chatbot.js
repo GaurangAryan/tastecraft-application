@@ -1,8 +1,7 @@
 // ==================== TASTECRAFT AI CHEF CHATBOT ====================
-// Frontend chatbot — connects to Gemini 1.5 Flash backend (server.js)
-// Backend must be running: npm start
+// Frontend chatbot — connects to deployed Render backend
 
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://tastecraft-backend.onrender.com';
 
 let conversationHistory = [];
 let chatbotCreated = false;
@@ -14,11 +13,20 @@ function openChatbot() {
         createChatbotModal();
         chatbotCreated = true;
     }
+
     document.getElementById('chatbot-modal').style.display = 'flex';
     document.getElementById('chat-input').focus();
 
     if (conversationHistory.length === 0) {
-        addBotMessage('👋 Hey! I\'m your AI Chef, powered by **Gemini 1.5 Flash**.\n\nAsk me anything:\n\n• 🍛 Recipe ideas from ingredients you have\n• ⏱️ Quick meal suggestions\n• 🔄 Ingredient substitutions\n• 🥗 Healthy options\n\nWhat would you like to cook today?');
+        addBotMessage(
+            '👋 Hey! I\'m your AI Chef, powered by **Gemini 2.5 Flash**.\n\n' +
+            'Ask me anything:\n\n' +
+            '• 🍛 Recipe ideas from ingredients you have\n' +
+            '• ⏱️ Quick meal suggestions\n' +
+            '• 🔄 Ingredient substitutions\n' +
+            '• 🥗 Healthy options\n\n' +
+            'What would you like to cook today?'
+        );
     }
 }
 
@@ -40,7 +48,7 @@ function createChatbotModal() {
             <div class="chatbot-header">
                 <div class="chatbot-header-info">
                     <h3>🤖 AI Chef Assistant</h3>
-                    <p>Powered by Gemini 1.5 Flash</p>
+                    <p>Powered by Gemini 2.5 Flash</p>
                 </div>
                 <div style="display:flex;gap:0.5rem;align-items:center;">
                     <button class="clear-chat-btn" onclick="clearConversation()">🗑️ Clear</button>
@@ -73,7 +81,6 @@ function createChatbotModal() {
 
     document.body.appendChild(modal);
 
-    // Close on backdrop click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeChatbot();
     });
@@ -112,52 +119,40 @@ async function sendChatMessage() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                message: message,
-                conversationHistory: conversationHistory
+                message,
+                conversationHistory
             })
         });
 
         removeTypingIndicator();
 
+        const data = await response.json().catch(() => ({}));
+
         if (!response.ok) {
-            const errData = await response.json().catch(() => ({}));
-            throw new Error(errData.details || `HTTP ${response.status}: ${response.statusText}`);
+            throw new Error(data.details || data.error || `HTTP ${response.status}`);
         }
 
-        const data = await response.json();
-
-        // Save to history
         conversationHistory.push({ role: 'user', content: message });
         conversationHistory.push({ role: 'assistant', content: data.reply });
 
-        // Trim history to last 20 messages (10 pairs)
         if (conversationHistory.length > 20) {
             conversationHistory = conversationHistory.slice(-20);
         }
 
-        addBotMessage(data.reply);
+        addBotMessage(data.reply || 'Sorry, I did not get a proper response.');
 
     } catch (error) {
         removeTypingIndicator();
         console.error('[Chatbot Error]', error);
 
-        const isNetworkError = error.message.includes('Failed to fetch') ||
-                               error.message.includes('NetworkError') ||
-                               error.message.includes('ERR_CONNECTION_REFUSED');
-
-        if (isNetworkError) {
-            addBotMessage(
-                '❌ **Backend server not running!**\n\n' +
-                'Steps to fix:\n' +
-                '1. Open your project folder in terminal\n' +
-                '2. Run: `npm install` (first time only)\n' +
-                '3. Run: `npm start`\n' +
-                '4. Wait for "✅ TasteCraft Backend Started" message\n' +
-                '5. Then try again!'
-            );
-        } else {
-            addBotMessage(`❌ **Error:** ${error.message}`);
-        }
+        addBotMessage(
+            '❌ **Could not connect to TasteCraft backend.**\n\n' +
+            'Possible reasons:\n' +
+            '1. Render free backend is waking up. Wait 30–60 seconds and try again.\n' +
+            '2. Backend URL is incorrect.\n' +
+            '3. CORS issue from backend.\n\n' +
+            `Error: ${error.message}`
+        );
     } finally {
         isSending = false;
         input.disabled = false;
@@ -170,6 +165,7 @@ async function sendChatMessage() {
 // ==================== QUICK ASK ====================
 function quickAsk(question) {
     if (isSending) return;
+
     const input = document.getElementById('chat-input');
     if (input) {
         input.value = question;
@@ -181,8 +177,10 @@ function quickAsk(question) {
 function addUserMessage(text) {
     const container = document.getElementById('chatbot-messages');
     const div = document.createElement('div');
+
     div.className = 'chat-message user-message';
     div.innerHTML = `<div class="message-content">${escapeHtml(text)}</div>`;
+
     container.appendChild(div);
     scrollToBottom();
 }
@@ -191,11 +189,13 @@ function addUserMessage(text) {
 function addBotMessage(text) {
     const container = document.getElementById('chatbot-messages');
     const div = document.createElement('div');
+
     div.className = 'chat-message bot-message';
     div.innerHTML = `
         <div class="message-avatar">🤖</div>
         <div class="message-content">${formatMessage(text)}</div>
     `;
+
     container.appendChild(div);
     scrollToBottom();
 }
@@ -204,6 +204,7 @@ function addBotMessage(text) {
 function showTypingIndicator() {
     const container = document.getElementById('chatbot-messages');
     const div = document.createElement('div');
+
     div.id = 'typing-indicator';
     div.className = 'chat-message bot-message';
     div.innerHTML = `
@@ -212,6 +213,7 @@ function showTypingIndicator() {
             <span></span><span></span><span></span>
         </div>
     `;
+
     container.appendChild(div);
     scrollToBottom();
 }
@@ -225,8 +227,10 @@ function removeTypingIndicator() {
 function clearConversation() {
     if (confirm('Clear all conversation history?')) {
         conversationHistory = [];
+
         const container = document.getElementById('chatbot-messages');
         if (container) container.innerHTML = '';
+
         addBotMessage('🧹 Conversation cleared! What would you like to cook?');
     }
 }
@@ -244,9 +248,11 @@ function escapeHtml(text) {
 }
 
 function formatMessage(text) {
-    let f = escapeHtml(text);
-    f = f.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');  // bold
-    f = f.replace(/`(.*?)`/g, '<code>$1</code>');             // inline code
-    f = f.replace(/\n/g, '<br>');                              // line breaks
+    let f = escapeHtml(text || '');
+
+    f = f.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    f = f.replace(/`(.*?)`/g, '<code>$1</code>');
+    f = f.replace(/\n/g, '<br>');
+
     return f;
 }
