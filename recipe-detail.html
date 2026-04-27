@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Detail - TasteCraft</title>
+    <link rel="stylesheet" href="recipe-detail.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <h1 class="logo">TasteCraft</h1>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            
+            <button class="back-btn" onclick="goBack()">
+                ← Back to Recipes
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="recipe-detail-container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-image-container">
+                <img id="recipe-image" src="" alt="" class="hero-image">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="recipe-header">
+                    <div class="recipe-title-section">
+                        <h1 id="recipe-name" class="recipe-title">Loading...</h1>
+                        <p id="recipe-name-hindi" class="recipe-title-hindi">...</p>
+                    </div>
+                    
+                    <div class="recipe-actions">
+                        <button class="action-btn" onclick="shareRecipe()">
+                            
+                            <span class="action-label">Share</span>
+                        </button>
+                        
+                    </div>
+                </div>
+
+                <!-- Meta Info -->
+                <div class="recipe-meta">
+                    <div class="meta-group">
+                        
+                        <span id="recipe-time" class="meta-value">0 mins</span>
+                    </div>
+                    <div class="meta-group">
+                        <span class="meta-icon">●</span>
+                        <span id="recipe-difficulty" class="meta-value">Medium</span>
+                    </div>
+                    <div class="meta-group">
+                        <span id="recipe-diet-badge" class="meta-badge"> Veg</span>
+                    </div>
+                    <div class="meta-group">
+                        
+                        <span id="recipe-cost" class="meta-value">₹0-0</span>
+                    </div>
+                    <div class="meta-group">
+                        
+                        <span id="recipe-calories" class="meta-value">0 cal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            
+            <!-- Left Column: Ingredients & Nutrition -->
+            <aside class="sidebar">
+                
+                <!-- Ingredients Section -->
+                <section class="content-card ingredients-section">
+                    <div class="card-header">
+                        <h2 class="section-title"> Ingredients</h2>
+                        <div class="servings-adjuster">
+                            <button class="serving-btn" onclick="adjustServings(-1)">−</button>
+                            <span class="servings-display">
+                                <span id="current-servings">4</span> servings
+                            </span>
+                            <button class="serving-btn" onclick="adjustServings(1)">+</button>
+                        </div>
+                    </div>
+                    
+                    <ul id="ingredients-list" class="ingredients-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                    
+                    <div class="total-cost">
+                        <span class="cost-label">Estimated Total Cost:</span>
+                        <span id="total-cost" class="cost-value">₹0-0</span>
+                    </div>
+                </section>
+
+                <!-- Nutrition Section -->
+                <section class="content-card nutrition-section">
+                    <h2 class="section-title"> Nutrition Facts</h2>
+                    <p class="nutrition-subtitle">Per Serving</p>
+                    
+                    <div class="nutrition-grid">
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Calories</span>
+                            <span id="nutrition-calories" class="nutrition-value">0 kcal</span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Protein</span>
+                            <div class="nutrition-bar-container">
+                                <div id="protein-bar" class="nutrition-bar" style="width: 0%"></div>
+                                <span id="nutrition-protein" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Carbs</span>
+                            <div class="nutrition-bar-container">
+                                <div id="carbs-bar" class="nutrition-bar" style="width: 0%"></div>
+                                <span id="nutrition-carbs" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Fat</span>
+                            <div class="nutrition-bar-container">
+                                <div id="fat-bar" class="nutrition-bar" style="width: 0%"></div>
+                                <span id="nutrition-fat" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </aside>
+
+            <!-- Right Column: Instructions & Tips -->
+            <main class="main-column">
+                
+                <!-- Instructions Section -->
+                <section class="content-card instructions-section">
+                    <h2 class="section-title">  Cooking Instructions</h2>
+                    
+                    <div id="instructions-list" class="instructions-list">
+                        <!-- Dynamically populated -->
+                    </div>
+                </section>
+
+                <!-- Tips Section -->
+                <section class="content-card tips-section">
+                    <h2 class="section-title"> Chef's Tips & Tricks</h2>
+                    <ul id="tips-list" class="tips-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </section>
+
+                <!-- Similar Recipes Section -->
+                <section class="content-card similar-section">
+                    <h2 class="section-title"> You Might Also Like</h2>
+                    <div id="similar-recipes" class="similar-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </main>
+
+    <!-- Timer Modal (Hidden by default) -->
+    <div id="timer-modal" class="timer-modal" style="display: none;">
+        <div class="timer-content">
+            <div class="timer-header">
+                <h3 class="timer-title">Cooking Timer</h3>
+                <button class="close-timer" onclick="closeTimer()">✕</button>
+            </div>
+            <div class="timer-display">
+                <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="timer-start-btn" class="timer-btn" onclick="startTimer()">Start</button>
+                <button id="timer-pause-btn" class="timer-btn" onclick="pauseTimer()" style="display: none;">Pause</button>
+                <button class="timer-btn secondary" onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="recipes.js"></script>
+    <script src="recipe-detail.js"></script>
+</body>
+</html>

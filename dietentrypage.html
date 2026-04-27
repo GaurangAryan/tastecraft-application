@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Choose Your Preference</title>
+    <link rel="stylesheet" href="./dietentrypage.css">
+</head>
+<body>
+    <!-- Background container -->
+    <div class="background-container"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">TasteCraft</h1>
+            <p class="tagline">Your Culinary Journey Begins Here</p>
+            <p class="tagline-hindi">आपकी पाक यात्रा यहाँ से शुरू होती है</p>
+        </header>
+
+        <!-- Diet choice cards -->
+        <div class="cards-container">
+            <!-- Vegetarian Card -->
+            <div class="glass-card veg-card">
+                <h2 class="card-title">Vegetarian</h2>
+                <p class="card-title-hindi">शाकाहारी</p>
+                <p class="card-description">
+                    Explore plant-based recipes from Indian & Continental cuisines
+                </p>
+                <a href="cuisineentrypage.html"></a>
+                <button class="enter-button" onclick="selectDiet('veg')">
+                    Enter
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+
+            <!-- Non-Vegetarian Card -->
+            <div class="glass-card nonveg-card">
+                <h2 class="card-title">Non-Vegetarian</h2>
+                <p class="card-title-hindi">मांसाहारी</p>
+                <p class="card-description">
+                    Discover meat, seafood & poultry dishes from around the world
+                </p>
+                <button class="enter-button" onclick="selectDiet('nonveg')">
+                    Enter
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🌍 Indian • Continental • Asian Cuisines</p>
+        </footer>
+    </div>
+
+    <script src="./diet.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* ===== DESSERTS PAGE ACCENT ===== */
+.hero-accent-des { color: #E91E8C; }
+
+.des-badge {
+    background: rgba(233,30,140,0.15);
+    color: #E91E8C;
+    border-color: rgba(233,30,140,0.3);
+}
+
+.page-category-badge {
+    display: inline-block;
+    background: rgba(233,30,140,0.15);
+    color: #E91E8C;
+    border: 1px solid rgba(233,30,140,0.3);
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.des-card .card-image-container { background: linear-gradient(135deg, #2a0d1a 0%, #1a0610 100%); }
+.des-card .tag { background: rgba(233,30,140,0.12); color: #E91E8C; }
+.des-card .view-recipe-btn { background: linear-gradient(135deg, #E91E8C, #c0186e); }
+.des-card .view-recipe-btn:hover { background: linear-gradient(135deg, #c0186e, #9a1259); }
+
+/* Origin badge colours */
+.origin-indian { background: black; color: white; }
+.origin-continental { background: black; color: white; }
+
+/* Hero emoji BG */
+.des-emoji-bg {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9rem;
+    background: linear-gradient(135deg, #1a0610 0%, #2e0d1e 100%);
+    animation: floatHero 4s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-18px) scale(1.04); }
+}
+
+.des-origin-badge { border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 600; }
+
+
+/* ===== DIFFICULTY BADGE ===== */
+.diff-badge {
+    font-size: 0.72rem !important;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+}
+
+/* ===== SERVINGS ADJUSTER (pink accent for desserts) ===== */
+.servings-adjuster .serving-btn {
+    background: #E91E8C;
+}
+.servings-adjuster .serving-btn:hover {
+    background: #c0186e;
+}

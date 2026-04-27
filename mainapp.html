@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Discover Recipes</title>
+    <link rel="stylesheet" href="mainapp.css">
+    <link rel="stylesheet" href="./chatbot.css">
+</head>
+<body>
+    <!-- Animated Gradient Background -->
+    <div class="gradient-background"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="./cuisineentrypage.html"<h1 class="logo">TasteCraft</h1></a>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="" class="nav-link active">Recipes</a>
+                <a href="./beverages.html" class="nav-link">Beverages</a>
+                <a href="./desserts.html" class="nav-link">Desserts</a>
+                <a href="./contact.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <button class="change-pref-btn" onclick="changePreferences()">
+                    Change Preferences
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Hero Section with Search -->
+            <section class="hero-section">
+                <h2 class="hero-title" id="hero-title">Vegetarian Indian Recipes</h2>
+                <p class="hero-subtitle" id="hero-subtitle">Discover authentic homemade dishes | घर का स्वादिष्ट खाना</p>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="Search recipes... (e.g., Palak Paneer, Dal)"
+                            onkeyup="filterRecipes()"
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Controls -->
+            <section class="filter-section">
+                <div class="filter-container">
+                    <!-- Meal Type Filter -->
+                    <div class="filter-group">
+                        <label class="filter-label">Meal Type:</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterByMealType('all')">All</button>
+                            <button class="filter-btn" onclick="filterByMealType('breakfast')"> Breakfast</button>
+                            <button class="filter-btn" onclick="filterByMealType('lunch')"> Lunch</button>
+                            <button class="filter-btn" onclick="filterByMealType('dinner')"> Dinner</button>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Filter -->
+                    <!--<div class="filter-group">
+                        <label class="filter-label">Difficulty:</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterByDifficulty('all')">All</button>
+                            <button class="filter-btn" onclick="filterByDifficulty('easy')">Easy</button>
+                            <button class="filter-btn" onclick="filterByDifficulty('medium')">Medium</button>
+                            <button class="filter-btn" onclick="filterByDifficulty('hard')">Hard</button>
+                        </div>
+                    </div>
+
+                    <!-- Cost Filter -->
+                    <!--<div class="filter-group">
+                        <label class="filter-label">Budget:</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterByCost('all')">All</button>
+                            <button class="filter-btn" onclick="filterByCost('budget')"> Budget</button>
+                            <button class="filter-btn" onclick="filterByCost('moderate')"> Moderate</button>
+                            <button class="filter-btn" onclick="filterByCost('premium')"> Premium</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Counter -->
+                <div class="results-info">
+                    <p id="results-count">Showing 12 recipes</p>
+                </div>
+            </section>
+
+            <!-- Recipe Grid -->
+            <section class="recipe-grid" id="recipe-grid">
+                <!-- Recipe cards will be dynamically inserted here -->
+            </section>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <div class="no-results-icon">No Result</div>
+                <h3>No recipes found</h3>
+                <p>Try adjusting your filters or search term</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating AI Chatbot Button -->
+    <button class="chatbot-btn" onclick="openChatbot()" title="Ask AI Chef">
+        🤖
+        <span class="chatbot-label">AI Chef</span>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="recipes.js"></script>
+    <script src="mainapp.js"></script>
+    <script src="./chatbot.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+# ==================== TASTECRAFT GITIGNORE ====================
+
+# Environment variables (NEVER COMMIT THIS!)
+.env
+.env.local
+.env.development
+.env.production
+backend/.env
+
+# Node modules
+node_modules/
+backend/node_modules/
+
+# Logs
+npm-debug.log
+yarn-error.log
+logs/
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/

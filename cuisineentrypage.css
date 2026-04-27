@@ -1,0 +1,494 @@
+/* ==================== FONTS ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ==================== RESET & VARIABLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --indian-accent: #FF6F00;
+    --continental-accent: #1976D2;
+    --white: #FFFFFF;
+    --dark: #1A1A1A;
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* ==================== BACKGROUND ==================== */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* PLACEHOLDER: Replace with your main background image */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: url('./images/cuisineback.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==================== MAIN CONTAINER ==================== */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s ease-out;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 300;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tagline-hindi {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin-top: 1rem;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-3px);
+}
+
+/* ==================== CARDS CONTAINER ==================== */
+.cards-container {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* ==================== GLASSMORPHISM CARDS (EXPANDED) ==================== */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    padding: 2.5rem 2rem;
+    width: 420px;
+    text-align: center;
+    
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+    /* CARD BACKGROUND IMAGES - DYNAMIC */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.glass-card:hover::before {
+    left: 100%;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== DYNAMIC CARD BACKGROUNDS ==================== */
+
+/* VEG BACKGROUNDS */
+body[data-diet="veg"] .indian-card {
+    
+    background-image: url('./images/vegindian.png'); 
+    border-top: 5px solid #4CAF50;
+}
+
+body[data-diet="veg"] .continental-card {
+    
+    background-image: url('./images/vegconti.png'); 
+    border-top: 5px solid #2196F3;
+}
+
+body[data-diet="veg"] .indian-card:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(76, 175, 80, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body[data-diet="veg"] .continental-card:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(33, 150, 243, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* NON-VEG BACKGROUNDS */
+body[data-diet="nonveg"] .indian-card {
+    
+    background-image: url('./images/nonvegindian.png');
+    border-top: 5px solid #D84315;
+}
+
+body[data-diet="nonveg"] .continental-card {
+    
+    background-image: url('./images/nonvegconti.png'); 
+    border-top: 5px solid #F57C00;
+}
+
+body[data-diet="nonveg"] .indian-card:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(216, 67, 21, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+body[data-diet="nonveg"] .continental-card:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(245, 124, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== CARD CONTENT ==================== */
+.card-flag {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-title-hindi {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+/* ==================== ACCENT LINE ==================== */
+.accent-line {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.6);
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+}
+
+/* ==================== DISH PREVIEW SECTION ==================== */
+.dish-preview {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.preview-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.dish-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.dish-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.dish-tag:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ==================== ENTER BUTTON ==================== */
+.enter-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.enter-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.enter-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.enter-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.enter-button:active {
+    transform: translateY(0);
+}
+
+.arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.enter-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    text-align: center;
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-out 0.6s both;
+    margin-top: 1rem;
+}
+
+#diet-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 968px) {
+    .cards-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .glass-card {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .glass-card {
+        padding: 2rem 1.5rem;
+        width: 100%;
+    }
+    
+    .card-title {
+        font-size: 1.6rem;
+    }
+    
+    .card-flag {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .header {
+        margin-bottom: 2rem;
+    }
+    
+    .glass-card {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .card-title {
+        font-size: 1.4rem;
+    }
+    
+    .dish-tags {
+        gap: 0.4rem;
+    }
+    
+    .dish-tag {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .enter-button {
+        padding: 0.8rem 2rem;
+        font-size: 0.95rem;
+    }
+}

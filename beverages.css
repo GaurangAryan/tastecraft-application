@@ -1,0 +1,54 @@
+/* ===== BEVERAGES PAGE ACCENT ===== */
+.hero-accent-bev { color: #4ECDC4; }
+
+.page-category-badge {
+    display: inline-block;
+    background: rgba(78,205,196,0.15);
+    color: #4ECDC4;
+    border: 1px solid rgba(78,205,196,0.3);
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+/* Beverage card image area */
+.bev-card .card-image-container { background: linear-gradient(135deg, #1a3a3a 0%, #0d2626 100%); }
+.bev-card .card-badge-type { background: rgba(78,205,196,0.2); color: #4ECDC4; }
+.bev-card .tag { background: rgba(78,205,196,0.12); color: #4ECDC4; }
+.bev-card .view-recipe-btn { background: linear-gradient(135deg, #4ECDC4, #2bb5ac); }
+.bev-card .view-recipe-btn:hover { background: linear-gradient(135deg, #3dbdb4, #1a9e96); }
+
+/* Type badge colours on list page */
+.type-hot     { background: white;  color: black; }
+.type-cold    { background: white;  color: black; }
+.type-healthy { background: white;  color: black; }
+
+/* Hero emoji background on detail page */
+.hero-emoji-bg {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9rem;
+    background: linear-gradient(135deg, #0d2a2a 0%, #1a3d3d 100%);
+    animation: floatHero 4s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-18px) scale(1.04); }
+}
+
+/* Detail page type badge */
+.bev-type-badge { background: rgba(10, 10, 10, 0.2); color: white; border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; font-weight: 600; }
+
+
+/* ===== SERVINGS ADJUSTER (teal accent for beverages) ===== */
+.servings-adjuster .serving-btn {
+    background: #4ECDC4;
+}
+.servings-adjuster .serving-btn:hover {
+    background: #2bb5ac;
+}

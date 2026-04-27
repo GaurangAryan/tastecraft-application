@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Desserts</title>
+    <link rel="stylesheet" href="mainapp.css">
+    <link rel="stylesheet" href="desserts.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="gradient-background"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="./cuisineentrypage.html"><h1 class="logo">TasteCraft</h1></a>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            <nav class="nav-links">
+                <a href="./mainapp.html" class="nav-link">Recipes</a>
+                <a href="./beverages.html" class="nav-link">Beverages</a>
+                <a href="./desserts.html" class="nav-link active">Desserts</a>
+                <a href="./contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="change-pref-btn" onclick="window.location.href='./cuisineentrypage.html'">Change Preferences</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <section class="hero-section">
+                <h2 class="hero-title">Indulgent <span class="hero-accent-des">Desserts</span></h2>
+                <p class="hero-subtitle">From silky gulab jamun to creamy tiramisu — satisfy every sweet craving | मिठाइयाँ</p>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="des-search" class="search-input"
+                            placeholder="Search desserts... (e.g., Gulab Jamun, Tiramisu)"
+                            onkeyup="filterDesserts()">
+                    </div>
+                </div>
+            </section>
+
+            <section class="filter-section">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label class="filter-label">Difficulty:</label>
+                        <div class="filter-buttons" id="diff-btns">
+                            <button class="filter-btn active" onclick="filterByDiff('all', this)">All</button>
+                            <button class="filter-btn" onclick="filterByDiff('easy', this)"> Easy</button>
+                            <button class="filter-btn" onclick="filterByDiff('medium', this)"> Medium</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-info">
+                    <p id="des-count">Showing desserts</p>
+                </div>
+            </section>
+
+            <section class="recipe-grid" id="des-grid"></section>
+
+            <div class="no-results" id="des-no-results" style="display:none;">
+                <div class="no-results-icon">No Result</div>
+                <h3>No desserts found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
+        </div>
+    </main>
+
+    <button class="chatbot-btn" onclick="openChatbot()" title="AI Chef">🤖<span class="chatbot-label">AI Chef</span></button>
+
+    <script src="desserts-data.js"></script>
+    <script src="desserts.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

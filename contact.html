@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Contact Us</title>
+    <link rel="stylesheet" href="mainapp.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="gradient-background"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="./cuisineentrypage.html"><h1 class="logo">TasteCraft</h1></a>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            <nav class="nav-links">
+                <a href="./mainapp.html" class="nav-link">Recipes</a>
+                <a href="./beverages.html" class="nav-link">Beverages</a>
+                <a href="./desserts.html" class="nav-link">Desserts</a>
+                <a href="./contact.html" class="nav-link active">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="change-pref-btn" onclick="window.location.href='./cuisineentrypage.html'">Change Preferences</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-main">
+
+        <!-- Hero -->
+        <section class="contact-hero">
+            <div class="contact-hero-inner">
+                <div class="contact-badge"> Get In Touch</div>
+                <h1 class="contact-title">Let's Talk <span class="contact-title-accent">Food</span></h1>
+                <p class="contact-subtitle">Have a recipe suggestion, found a bug, or just want to say namaste? We'd love to hear from you.</p>
+            </div>
+            <div class="hero-deco-ring hero-ring-1"></div>
+            <div class="hero-deco-ring hero-ring-2"></div>
+        </section>
+
+        <div class="contact-layout">
+
+            <!-- Info Cards -->
+            <aside class="contact-info">
+                <div class="info-card">
+                
+                    <h3>Recipe Suggestions</h3>
+                    <p>Got a family recipe you'd love to see on TasteCraft? Share it with us and we may feature it.</p>
+                </div>
+                <div class="info-card">
+                   
+                    <h3>Report an Issue</h3>
+                    <p>Found something broken or a recipe that needs fixing? We appreciate every bug report.</p>
+                </div>
+                <div class="info-card">
+                   
+                    <h3>Collaboration</h3>
+                    <p>Chefs, food bloggers, or brands interested in partnering with TasteCraft — reach out!</p>
+                </div>
+                <div class="info-card info-card-highlight">
+                   
+                    <h3>Quick Response</h3>
+                    <p>We typically respond within <strong>24–48 hours</strong>. Your message matters to us.</p>
+                </div>
+            </aside>
+
+            <!-- Form -->
+            <div class="contact-form-wrapper">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2 class="form-title">Send a Message</h2>
+                        <p class="form-subtitle">Fill in the details below and hit send — simple as that.</p>
+                    </div>
+
+                    <!-- 
+                        FORMSPREE SETUP:
+                        Replace YOUR_FORM_ID below with your actual Formspree form ID.
+                        Get one free at https://formspree.io/
+                        e.g. action="https://formspree.io/f/abcd1234"
+                    -->
+                    <form
+                        id="contact-form"
+                        action="https://formspree.io/f/myklblao"
+                        method="POST"
+                        novalidate
+                    >
+                        <!-- Honeypot spam protection (Formspree reads this) -->
+                        <input type="text" name="_gotcha" style="display:none">
+
+                        <!-- Redirect after submission (optional) -->
+                        <!-- <input type="hidden" name="_next" value="https://yoursite.com/thanks.html"> -->
+
+                        <div class="form-group">
+                            <label class="form-label" for="name">
+                                Full Name <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-input"
+                                    placeholder="Your full name"
+                                    required
+                                    autocomplete="name"
+                                >
+                            </div>
+                            <span class="field-error" id="name-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">
+                                Email Address <span class="required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                             
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-input"
+                                    placeholder="you@example.com"
+                                    required
+                                    autocomplete="email"
+                                >
+                            </div>
+                            <span class="field-error" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="subject">
+                                Subject
+                            </label>
+                            <div class="input-wrapper">
+                               
+                                <select id="subject" name="subject" class="form-input form-select">
+                                    <option value="" disabled selected>What is this about?</option>
+                                    <option value="Recipe Suggestion"> Recipe Suggestion</option>
+                                    <option value="Bug Report"> Bug Report</option>
+                                    <option value="Collaboration"> Collaboration</option>
+                                    <option value="General Feedback"> General Feedback</option>
+                                    <option value="Other"> Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">
+                                Message <span class="required">*</span>
+                            </label>
+                            <div class="textarea-wrapper">
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    class="form-textarea"
+                                    placeholder="Tell us what's on your mind..."
+                                    rows="5"
+                                    required
+                                    maxlength="2000"
+                                ></textarea>
+                                <span class="char-count" id="char-count">0 / 2000</span>
+                            </div>
+                            <span class="field-error" id="message-error"></span>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <span class="submit-label">Send Message</span>
+                            
+                            <span class="submit-loading" style="display:none">Sending...</span>
+                        </button>
+
+                    </form>
+
+                    <!-- Success state (shown after JS submission) -->
+                    <div class="form-success" id="form-success" style="display:none">
+                       
+                        <h3>Message Sent!</h3>
+                        <p>Thanks for reaching out. We'll get back to you within 24–48 hours.</p>
+                        <button class="send-another-btn" onclick="resetForm()">Send Another Message</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+   
+    <script src="contact.js"></script>
+   
+    
+</body>
+</html>

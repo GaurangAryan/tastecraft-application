@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Beverages</title>
+    <link rel="stylesheet" href="mainapp.css">
+    <link rel="stylesheet" href="beverages.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="gradient-background"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="./cuisineentrypage.html"><h1 class="logo">TasteCraft</h1></a>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            <nav class="nav-links">
+                <a href="./mainapp.html" class="nav-link">Recipes</a>
+                <a href="./beverages.html" class="nav-link active">Beverages</a>
+                <a href="./desserts.html" class="nav-link">Desserts</a>
+                <a href="./contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="change-pref-btn" onclick="window.location.href='./cuisineentrypage.html'">Change Preferences</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <section class="hero-section">
+                <h2 class="hero-title">Refreshing <span class="hero-accent-bev">Beverages</span></h2>
+                <p class="hero-subtitle">From frothy chai to tropical coolers — handcrafted drink recipes | ताज़ा पेय पदार्थ</p>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="bev-search" class="search-input"
+                            placeholder="Search beverages... (e.g., Lassi, Chai, Coffee)"
+                            onkeyup="filterBeverages()">
+                    </div>
+                </div>
+            </section>
+
+            <section class="filter-section">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label class="filter-label">Drink Type:</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" onclick="filterByType('all', this)">All</button>
+                            <button class="filter-btn" onclick="filterByType('hot', this)"> Hot</button>
+                            <button class="filter-btn" onclick="filterByType('cold', this)"> Cold</button>
+                            <button class="filter-btn" onclick="filterByType('healthy', this)"> Healthy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-info">
+                    <p id="bev-count">Showing beverages</p>
+                </div>
+            </section>
+
+            <section class="recipe-grid" id="bev-grid"></section>
+
+            <div class="no-results" id="bev-no-results" style="display:none;">
+                <div class="no-results-icon">No Result</div>
+                <h3>No beverages found</h3>
+                <p>Try adjusting your search or filter</p>
+            </div>
+        </div>
+    </main>
+
+    <button class="chatbot-btn" onclick="openChatbot()" title="AI Chef">🤖<span class="chatbot-label">AI Chef</span></button>
+
+    <script src="beverages-data.js"></script>
+    <script src="beverages.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

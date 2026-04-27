@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteCraft - Choose Your Cuisine</title>
+    <link rel="stylesheet" href="./cuisineentrypage.css">
+</head>
+<body data-diet="veg">
+    <!-- Background container -->
+    <div class="background-container"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">TasteCraft</h1>
+            <p class="tagline">Explore Authentic Cuisines</p>
+            <p class="tagline-hindi">प्रामाणिक व्यंजनों का अन्वेषण करें</p>
+            
+            <!-- Back button -->
+            <button class="back-button" onclick="goBack()">
+                ← Change Preference
+            </button>
+        </header>
+
+        <!-- Cuisine choice cards -->
+        <div class="cards-container">
+            <!-- Indian Card -->
+            <div class="glass-card indian-card" data-cuisine="indian">
+                
+                <h2 class="card-title">Indian Vegetarian</h2>
+                <p class="card-title-hindi">भारतीय शाकाहारी</p>
+                <div class="accent-line"></div>
+                
+                <!-- Dish Preview -->
+                <div class="dish-preview">
+                    <p class="preview-label">Popular Dishes:</p>
+                    <div class="dish-tags">
+                        <span class="dish-tag">Palak Paneer</span>
+                        <span class="dish-tag">Dal Makhani</span>
+                        <span class="dish-tag">Chole Bhature</span>
+                        <span class="dish-tag">Masala Dosa</span>
+                    </div>
+                </div>
+                
+                <button class="enter-button" onclick="selectCuisine('indian')">
+                    Explore
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+
+            <!-- Continental Card -->
+            <div class="glass-card continental-card" data-cuisine="continental">
+                
+                <h2 class="card-title">Continental Vegetarian</h2>
+                <p class="card-title-hindi">कॉन्टिनेंटल शाकाहारी</p>
+                <div class="accent-line"></div>
+                
+                <!-- Dish Preview -->
+                <div class="dish-preview">
+                    <p class="preview-label">Popular Dishes:</p>
+                    <div class="dish-tags">
+                        <span class="dish-tag">Pasta Primavera</span>
+                        <span class="dish-tag">Ratatouille</span>
+                        <span class="dish-tag">Greek Salad</span>
+                        <span class="dish-tag">Mushroom Risotto</span>
+                    </div>
+                </div>
+                
+                <button class="enter-button" onclick="selectCuisine('continental')">
+                    Explore
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p id="diet-indicator"> Vegetarian Recipes Selected</p>
+        </footer>
+    </div>
+
+    <script src="./cuisine.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessert Detail - TasteCraft</title>
+    <link rel="stylesheet" href="recipe-detail.css">
+    <link rel="stylesheet" href="desserts.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <h1 class="logo">TasteCraft</h1>
+                <p class="logo-tagline">स्वाद की कहानी</p>
+            </div>
+            <button class="back-btn" onclick="goBack()">← Back to Desserts</button>
+        </div>
+    </header>
+
+    <main class="recipe-detail-container">
+
+        <section class="hero-section">
+            <div class="hero-image-container">
+                <div id="des-hero-emoji" class="hero-emoji-bg des-emoji-bg"></div>
+                <img id="des-hero-image" src="" alt="" class="hero-image" style="display:none">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="recipe-header">
+                    <div class="recipe-title-section">
+                        <h1 id="des-name" class="recipe-title">Loading...</h1>
+                        <p id="des-name-hindi" class="recipe-title-hindi">...</p>
+                    </div>
+                    <div class="recipe-actions">
+            
+                        <button class="action-btn" onclick="shareDes()">
+                            <span class="action-icon"></span><span class="action-label">Share</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="recipe-meta">
+                    <div class="meta-group"><span class="meta-icon">Time -</span><span id="des-time" class="meta-value">0 mins</span></div>
+                    <div class="meta-group"><span id="des-origin-badge" class="meta-badge des-origin-badge">Indian</span></div>
+                    <div class="meta-group"><span class="meta-icon"></span><span id="des-cost" class="meta-value">₹0</span></div>
+                    <div class="meta-group"><span class="meta-icon"></span><span id="des-cals" class="meta-value">0 cal</span></div>
+                    
+                </div>
+
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <aside class="sidebar">
+                <section class="content-card ingredients-section">
+                    <div class="card-header">
+                        <h2 class="section-title"> Ingredients</h2>
+                        <div class="servings-adjuster">
+                            <button class="serving-btn" onclick="adjustServings(-1)">&#8722;</button>
+                            <span class="servings-display">
+                                <span id="current-servings">4</span> servings
+                            </span>
+                            <button class="serving-btn" onclick="adjustServings(1)">+</button>
+                        </div>
+                    </div>
+                    <ul id="des-ingredients" class="ingredients-list"></ul>
+                    <div class="total-cost">
+                        <span class="cost-label">Estimated Cost:</span>
+                        <span id="des-total-cost" class="cost-value">₹0</span>
+                    </div>
+                </section>
+
+                <section class="content-card nutrition-section">
+                    <h2 class="section-title"> Nutrition Facts</h2>
+                    <p class="nutrition-subtitle">Per Serving</p>
+                    <div class="nutrition-grid">
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Calories</span>
+                            <span id="des-n-cals" class="nutrition-value">0 kcal</span>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Protein</span>
+                            <div class="nutrition-bar-container">
+                                <div id="des-protein-bar" class="nutrition-bar" style="width:0%"></div>
+                                <span id="des-n-protein" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Carbs</span>
+                            <div class="nutrition-bar-container">
+                                <div id="des-carbs-bar" class="nutrition-bar" style="width:0%"></div>
+                                <span id="des-n-carbs" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                        <div class="nutrition-item">
+                            <span class="nutrition-label">Fat</span>
+                            <div class="nutrition-bar-container">
+                                <div id="des-fat-bar" class="nutrition-bar" style="width:0%"></div>
+                                <span id="des-n-fat" class="nutrition-value">0g</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="main-column">
+                <section class="content-card instructions-section">
+                    <h2 class="section-title"> Cooking Instructions</h2>
+                    <div id="des-instructions" class="instructions-list"></div>
+                </section>
+                <section class="content-card tips-section">
+                    <h2 class="section-title"> Chef's Tips & Tricks</h2>
+                    <ul id="des-tips" class="tips-list"></ul>
+                </section>
+                <section class="content-card similar-section">
+                    <h2 class="section-title"> You Might Also Like</h2>
+                    <div id="des-similar" class="similar-grid"></div>
+                </section>
+            </main>
+        </div>
+    </main>
+
+    <!-- Timer Modal -->
+    <div id="des-timer-modal" class="timer-modal" style="display:none;">
+        <div class="timer-content">
+            <div class="timer-header">
+                <h3 class="timer-title">⏱ Cooking Timer</h3>
+                <button class="close-timer" onclick="closeDesTimer()">✕</button>
+            </div>
+            <div class="timer-display">
+                <span id="dt-min">00</span>:<span id="dt-sec">00</span>
+            </div>
+            <div class="timer-controls">
+                <button id="dt-start" class="timer-btn" onclick="startDesTimer()">Start</button>
+                <button id="dt-pause" class="timer-btn" onclick="pauseDesTimer()" style="display:none">Pause</button>
+                <button class="timer-btn secondary" onclick="resetDesTimer()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="desserts-data.js"></script>
+    <script src="dessert-detail.js"></script>
+</body>
+</html>
